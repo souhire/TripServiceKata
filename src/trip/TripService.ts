@@ -9,23 +9,12 @@ export default class TripService {
         const loggedUser: User = UserSession.getLoggedUser();
 
         if (loggedUser != null) {
-
-            const isFriend = this.isLoggedUserFriendOfUser(user, loggedUser);
-            if (isFriend) {
+            if (user.isFriend(loggedUser)) {
                 return TripDAO.findTripsByUser(user);
             }
             return [];
         } else {
             throw new UserNotLoggedInException();
         }
-    }
-
-    private isLoggedUserFriendOfUser(user: User, loggedUser: User): boolean {
-        for (const friend of user.getFriends()) {
-            if (friend === loggedUser) {
-                return true;
-            }
-        }
-        return false;
     }
 }
