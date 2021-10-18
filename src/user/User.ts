@@ -20,7 +20,7 @@ export default class User {
         return this.trips;
     }
 
-    public isFriend(user: User): boolean {
+    public hasAsFriend(user: User): boolean {
         return this.getFriends().findIndex((friend: User) => user === friend) >= 0;
     }
 }
