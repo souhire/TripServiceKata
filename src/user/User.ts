@@ -21,6 +21,6 @@ export default class User {
     }
 
     public isFriend(user: User): boolean {
-        return this.getFriends().findIndex((friend: User) => user === friend) > 0;
+        return this.getFriends().findIndex((friend: User) => user === friend) >= 0;
     }
 }
